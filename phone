@@ -1,0 +1,20 @@
+if [ "$#" -eq 0 ] 
+then
+    echo "Usage: phone searchfor[…searchfor]"
+    echo "You didn't tell me what you want to search for."
+else
+    cp mydata.txt tmp
+
+    for arg in "$@"
+    do
+        grep -i "$arg" tmp > tmp2 && mv tmp2 tmp
+    done
+
+    awk -f display.awk tmp
+fi
+
+
+
+
+
+
